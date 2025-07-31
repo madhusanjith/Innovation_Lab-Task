@@ -1,0 +1,11 @@
+
+// Task 2: Function Expressions & Arrow Functions
+const greet = function(name) {
+  console.log("Hello " + name);
+};
+greet("Sowndarya");
+
+const bye = (name) => {
+  console.log("Goodbye " + name);
+};
+bye("Madhumitha");
