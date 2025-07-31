@@ -1,0 +1,16 @@
+var name = "Madhumitha";
+let age = 19;
+const city = "New York";
+
+
+console.log("Name:", name);
+console.log("Age:", age);
+console.log("City:", city);
+
+
+name = "Nikil";
+age = 30;
+
+
+console.log("Updated Name:", name);
+console.log("Updated Age:", age);
