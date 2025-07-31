@@ -1,0 +1,93 @@
+
+    #output {
+      white-space: pre-wrap;
+      margin-top: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    button {
+      padding: 10px 15px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📟 Menu-Driven Calculator</h2>
+  <button onclick="startCalculator()">Start Calculator</button>
+
+  <div id="output"></div>
+
+  <script>
+    function startCalculator() {
+      let output = "";
+      let choice;
+
+      do {
+        choice = prompt(
+`📋 MENU:
+1. Add
+2. Subtract
+3. Multiply
+4. Divide
+5. Exit
+
+Enter your choice (1–5):`);
+
+        if (choice === null) break; // User pressed Cancel
+
+        choice = parseInt(choice);
+        if (isNaN(choice) || choice < 1 || choice > 5) {
+          alert("⚠️ Invalid menu choice. Please enter a number between 1 and 5.");
+          continue;
+        }
+
+        if (choice === 5) {
+          output += "\n✅ Exiting calculator...\n";
+          break;
+        }
+
+        let num1 = prompt("Enter first number:");
+        let num2 = prompt("Enter second number:");
+
+        // Input validation using if-else
+        if (isNaN(num1) || isNaN(num2) || num1 === "" || num2 === "") {
+          alert("❌ Invalid number input. Please enter valid numbers.");
+          continue;
+        }
+
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+
+        switch (choice) {
+          case 1:
+            output += `➕ ${num1} + ${num2} = ${num1 + num2}\n`;
+            break;
+          case 2:
+            output += `➖ ${num1} - ${num2} = ${num1 - num2}\n`;
+            break;
+          case 3:
+            output += `✖️ ${num1} * ${num2} = ${num1 * num2}\n`;
+            break;
+          case 4:
+            if (num2 === 0) {
+              alert("⚠️ Division by zero is not allowed.");
+              continue;
+            }
+            output += `➗ ${num1} / ${num2} = ${num1 / num2}\n`;
+            break;
+        }
+
+        document.getElementById("output").innerText = output;
+
+      } while (true);
+    }
